@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 
+const LOCALSTORAGE_CITIES_KEY = "cities";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -21,21 +22,24 @@ const MenuProps = {
 };
 
 function MainCompnent() {
-  const [personName, setPersonName] = React.useState([]);
-  const citiesArray = [];
+  const [selectedCities, setSelectedCities] = React.useState([]);
+
+  React.useEffect(() => {
+    const list = localStorage.getItem(LOCALSTORAGE_CITIES_KEY);
+    if (list) {
+      setSelectedCities(list.split(","));
+    }
+  }, []);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    // On autofill we get a stringified value.
+    const list = typeof value === "string" ? value.split(",") : value;
+    setSelectedCities(list);
+    localStorage.setItem(LOCALSTORAGE_CITIES_KEY, list);
   };
-  localStorage.setItem("cities", personName);
-  citiesArray.push(localStorage.getItem("cities"));
-  console.log(citiesArray);
 
   return (
     <div className="App">
@@ -45,7 +49,7 @@ function MainCompnent() {
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={selectedCities}
           onChange={handleChange}
           input={<OutlinedInput label="Cities" />}
           renderValue={(selected) => selected.join(", ")}
@@ -53,17 +57,17 @@ function MainCompnent() {
         >
           {cities.map((city) => (
             <MenuItem key={city} value={city}>
-              <Checkbox checked={personName.indexOf(city) > -1} />
+              <Checkbox checked={selectedCities.indexOf(city) > -1} />
               <ListItemText primary={city} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      {citiesArray.map((city) => {
-        if(city) {
+      {/* {citiesArray.map((city) => {
+        if (city) {
           return <BasicCard key={city} city={city}></BasicCard>;
         }
-      })}
+      })} */}
     </div>
   );
 }
