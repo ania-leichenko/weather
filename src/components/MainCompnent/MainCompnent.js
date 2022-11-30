@@ -1,13 +1,13 @@
-// import BasicCard from "../Card/Card";
+import BasicCard from "../Card/Card";
 import { cities } from "../../entities/cities";
-import * as React from 'react';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
+import * as React from "react";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import ListItemText from "@mui/material/ListItemText";
+import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,8 +21,8 @@ const MenuProps = {
 };
 
 function MainCompnent() {
- 
   const [personName, setPersonName] = React.useState([]);
+  const citiesArray = [];
 
   const handleChange = (event) => {
     const {
@@ -30,16 +30,15 @@ function MainCompnent() {
     } = event;
     setPersonName(
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
+      typeof value === "string" ? value.split(",") : value
     );
   };
+  localStorage.setItem("cities", personName);
+  citiesArray.push(localStorage.getItem("cities"));
+  console.log(citiesArray);
 
   return (
     <div className="App">
-      {/* {cities.map((city) => {
-        return <BasicCard key={city} city={city}></BasicCard>;
-      })} */}
-
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-checkbox-label">Cities</InputLabel>
         <Select
@@ -60,6 +59,11 @@ function MainCompnent() {
           ))}
         </Select>
       </FormControl>
+      {citiesArray.map((city) => {
+        if(city) {
+          return <BasicCard key={city} city={city}></BasicCard>;
+        }
+      })}
     </div>
   );
 }
