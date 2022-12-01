@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import MainCompnent from "./components/MainCompnent/MainCompnent";
+import MainCompnent from "./components/MainCompnent/MainComponent";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import FullWeatherInformation from "./components/FullInformation/FullInformation";
 import { store } from "./store/store";

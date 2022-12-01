@@ -62,18 +62,18 @@ export default function BasicCard() {
   // }
 
   return (
-      <Card className="root">
+      <Card className="card">
         <CardContent>
           <Typography variant="h5" component="div">
-            {/* {getCity.name} */}
+            {/* {getCity.name} */}11
           </Typography>
           <Typography variant="body2">
             <br />
-            {/* {date.toLocaleDateString("ua-UA", options)} */}
+            {/* {date.toLocaleDateString("ua-UA", options)} */}22
           </Typography>
           <Typography variant="body2">
             <br />
-            {/* {maxTemparature} / {minTemparature} ºC */}
+            {/* {maxTemparature} / {minTemparature} ºC */}33
             <br />
           </Typography>
           {/* <img

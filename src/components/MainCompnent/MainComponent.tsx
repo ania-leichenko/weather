@@ -1,5 +1,5 @@
 import type { RootState } from "../../store/store";
-
+import BasicCard from "../Card/Card.";
 import { cities } from "../../entities/cities";
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -11,6 +11,9 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import { setCity } from "../../store/citiesSlice";
+import Grid  from '@mui/material/Grid';
+import "./MainComponent.css";
+
 
 const LOCALSTORAGE_CITIES_KEY = "cities";
 const ITEM_HEIGHT = 48;
@@ -46,8 +49,9 @@ function MainCompnent() {
   };
 
   return (
-    <div className="App">
-      <FormControl sx={{ m: 1, width: 300 }}>
+    <div className="app">
+      <h1>Choose City:</h1>
+      <FormControl sx={{ m: 1, width: 300, margin: 4 }}>
         <InputLabel id="demo-multiple-checkbox-label">Cities</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
@@ -61,17 +65,23 @@ function MainCompnent() {
         >
           {cities.map((city) => (
             <MenuItem key={city} value={city}>
-              <Checkbox /*checked={selectedCities.indexOf(city) > -1}*/ />
+              <Checkbox checked={selectedCities.indexOf(city) > -1} />
               <ListItemText primary={city} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      {/* {citiesArray.map((city) => {
-        if (city) {
-          return <BasicCard key={city} city={city}></BasicCard>;
-        }
-      })} */}
+      <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center" spacing={2}>
+          { selectedCities.map((value) => (
+            <Grid key={value} item>
+              <BasicCard></BasicCard>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
+        </Grid>
     </div>
   );
 }
