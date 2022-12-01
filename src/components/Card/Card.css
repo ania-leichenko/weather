@@ -9,3 +9,7 @@
 .weather-title {
     text-shadow: rgb(140, 223, 231) 0.1em 0.1em 0.1em;
 }
+
+.link {
+  text-decoration: none;
+}

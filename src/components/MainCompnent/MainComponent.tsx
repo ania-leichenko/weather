@@ -74,9 +74,9 @@ function MainCompnent() {
       <Grid container spacing={2}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={2}>
-          { selectedCities.map((value) => (
-            <Grid key={value} item>
-              <BasicCard></BasicCard>
+          {selectedCities.map((city) => (
+            <Grid key={city} item>
+              <BasicCard city={city}></BasicCard>
             </Grid>
           ))}
         </Grid>
