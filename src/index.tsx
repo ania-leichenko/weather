@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 import MainCompnent from "./components/MainCompnent/MainCompnent";
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import FullWeatherInformation from "./components/FullInformation/FullInformation";
 import { store } from "./store/store";
@@ -16,7 +15,9 @@ const App = () => {
   return routes;
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -26,5 +27,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-reportWebVitals();

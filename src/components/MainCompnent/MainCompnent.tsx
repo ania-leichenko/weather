@@ -1,4 +1,5 @@
-//import BasicCard from "../Card/Card";
+import type { RootState } from "../../store/store";
+
 import { cities } from "../../entities/cities";
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -24,7 +25,7 @@ const MenuProps = {
 };
 
 function MainCompnent() {
-  const selectedCities = useSelector((state) => state.citiesSlice.cities);
+  const selectedCities = useSelector((state: RootState) => state.citiesSlice.cities);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -34,7 +35,7 @@ function MainCompnent() {
     }
   }, [dispatch]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { value: any } }) => {
     const {
       target: { value },
     } = event;
@@ -60,7 +61,7 @@ function MainCompnent() {
         >
           {cities.map((city) => (
             <MenuItem key={city} value={city}>
-              <Checkbox checked={selectedCities.indexOf(city) > -1} />
+              <Checkbox /*checked={selectedCities.indexOf(city) > -1}*/ />
               <ListItemText primary={city} />
             </MenuItem>
           ))}
