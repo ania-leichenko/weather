@@ -4,7 +4,9 @@ import './index.css';
 import MainCompnent from "./components/MainCompnent/MainCompnent";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
-import FullWeatherInformation from './components/FullInformation';
+import FullWeatherInformation from "./components/FullInformation/FullInformation";
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   let routes = useRoutes([
@@ -17,9 +19,11 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router basename="/">
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router basename="/">
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 

@@ -1,4 +1,4 @@
-import BasicCard from "../Card/Card";
+//import BasicCard from "../Card/Card";
 import { cities } from "../../entities/cities";
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,6 +8,8 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { useSelector, useDispatch } from "react-redux";
+import { setCity } from "../../store/citiesSlice";
 
 const LOCALSTORAGE_CITIES_KEY = "cities";
 const ITEM_HEIGHT = 48;
@@ -22,22 +24,23 @@ const MenuProps = {
 };
 
 function MainCompnent() {
-  const [selectedCities, setSelectedCities] = React.useState([]);
+  const selectedCities = useSelector((state) => state.citiesSlice.cities);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const list = localStorage.getItem(LOCALSTORAGE_CITIES_KEY);
-    if (list) {
-      setSelectedCities(list.split(","));
+    const str = localStorage.getItem(LOCALSTORAGE_CITIES_KEY);
+    if (str) {
+      dispatch(setCity(str.split(",")));
     }
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    // On autofill we get a stringified value.
+
     const list = typeof value === "string" ? value.split(",") : value;
-    setSelectedCities(list);
+    dispatch(setCity(list));
     localStorage.setItem(LOCALSTORAGE_CITIES_KEY, list);
   };
 
