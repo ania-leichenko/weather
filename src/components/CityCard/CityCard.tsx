@@ -1,42 +1,36 @@
-import * as React from "react";
+import React, { useEffect }from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useState, useEffect } from "react";
-import "./Card.css";
+import "./CityCard.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../store/store";
+import { setCityInformation } from "../../store/citiesSlice";
 
 type Props = {
   city: string;
 };
-type Weather = {
-  main: string;
-  icon: string;
-};
 
-type CityInformation = {
-  name: string;
-  weather: Array<Weather>;
-  main: { temp_min: number; temp_max: number };
-};
-
-export default function BasicCard({ city }: Props) {
-  const [
-    cityInformation,
-    setCityInformation,
-  ] = useState<CityInformation | null>(null);
+export default function CityCard({ city }: Props) {
+  const dispatch = useDispatch();
+  const citiesInformation = useSelector(
+    (state: RootState) => state.citiesSlice.citiesInformation
+  );
+  const cityInformation = citiesInformation[city];
   let weatherDescription;
   let minTemparature;
   let maxTemparature;
   let weatherIconId;
+
   function getCityInformation() {
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f847b24e7d8adac7b410a9f557f6a6b3`
     )
       .then((response) => response.json())
-      .then((data) => setCityInformation(data))
+      .then((data) => dispatch(setCityInformation(data)))
       .catch((error) => error);
   }
   useEffect(() => {

@@ -1,5 +1,5 @@
 import type { RootState } from "../../store/store";
-import BasicCard from "../Card/Card.";
+import BasicCard from "../CityCard/CityCard";
 import { cities } from "../../entities/cities";
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
