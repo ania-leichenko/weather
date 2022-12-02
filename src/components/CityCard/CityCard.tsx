@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../store/store";
 import { fetchCityByName } from "../../store/citiesSlice";
@@ -35,12 +34,13 @@ export default function CityCard({ city }: Props) {
   if (!cityInformation) {
     return null;
   }
+
   if (cityInformation.weather) {
     minTemparature = Math.floor(cityInformation.main.temp_min - 273);
     maxTemparature = Math.floor(cityInformation.main.temp_max - 273);
-    cityInformation.weather.map((weather) => {
+    cityInformation.weather.forEach((weather) => {
       weatherDescription = weather.main;
-      return (weatherIconId = weather.icon);
+      weatherIconId = weather.icon;
     });
   }
 
@@ -67,9 +67,6 @@ export default function CityCard({ city }: Props) {
     e.preventDefault();
     getCityInformation();
   }
-  function goToFullInformation(e: { preventDefault: () => void; }) {
-    e.preventDefault();
-  }
 
   return (
     <Card className="card" >
@@ -95,9 +92,7 @@ export default function CityCard({ city }: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={`/full-information/${cityInformation.name}`} className="link">
-          <Button size="small" >Learn more</Button>
-        </Link>
+        <Button size="small" href={`/full-information/${cityInformation.name}`} >Learn more</Button>
         <Button size="small" onClick={updateBtn}>
           Update
         </Button>

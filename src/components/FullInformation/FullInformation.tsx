@@ -51,23 +51,23 @@ export default function FullWeatherInformation() {
   };
 
   return (
-    <div className="root">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className="paper">
-            <Typography variant="h5" component="div">
-              {cityInformation.name}
-            </Typography>
-            <Typography variant="body2">
-              <br />
-              {new Date().toLocaleDateString("ua-UA", options)}
-            </Typography>
-            <Typography variant="body2">
-              <br />
-              The high will be {maxTemparature}ºC, the low will be{" "}
-              {minTemparature}ºC.
-              <br />
-            </Typography>
+    <Grid container>
+      <Grid item xs={12}>
+        <Paper className="paper" sx={{ p: 2 }}>
+          <Typography variant="h5" component="div">
+            {cityInformation.name}
+          </Typography>
+          <Typography variant="body2">
+            <br />
+            {new Date().toLocaleDateString("ua-UA", options)}
+          </Typography>
+          <Typography variant="body2">
+            <br />
+            The high will be {maxTemparature}ºC, the low will be{" "}
+            {minTemparature}ºC.
+            <br />
+          </Typography>
+          <Grid container alignItems="center">
             <img
               src={`http://openweathermap.org/img/w/${weatherIconId}.png`}
               alt="Weather Icon"
@@ -75,15 +75,15 @@ export default function FullWeatherInformation() {
             <Typography variant="body2" className="weather-title">
               {weatherDescription}
             </Typography>
-            <Typography variant="body2" className="humidity">
-              Humidity: {humidity}%
-            </Typography>
-            <Typography variant="body2" className="wind">
-              Wind speed: {wind}
-            </Typography>
-          </Paper>
-        </Grid>
+          </Grid>
+          <Typography variant="body2" className="humidity">
+            Humidity: {humidity}%
+          </Typography>
+          <Typography variant="body2" className="wind">
+            Wind speed: {wind}
+          </Typography>
+        </Paper>
       </Grid>
-    </div>
+    </Grid>
   );
 }

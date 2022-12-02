@@ -12,7 +12,6 @@ import Checkbox from "@mui/material/Checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import { setCity } from "../../store/citiesSlice";
 import Grid  from '@mui/material/Grid';
-import "./MainComponent.css";
 
 
 const LOCALSTORAGE_CITIES_KEY = "cities";
@@ -26,6 +25,7 @@ const MenuProps = {
     },
   },
 };
+
 
 function MainCompnent() {
   const selectedCities = useSelector((state: RootState) => state.citiesSlice.cities);
@@ -49,40 +49,42 @@ function MainCompnent() {
   };
 
   return (
-    <div className="app">
+    <Grid container direction="column" textAlign="center">
       <h1>Choose City:</h1>
-      <FormControl sx={{ m: 1, width: 300, margin: 4 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Cities</InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={selectedCities}
-          onChange={handleChange}
-          input={<OutlinedInput label="Cities" />}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
-        >
-          {cities.map((city) => (
-            <MenuItem key={city} value={city}>
-              <Checkbox checked={selectedCities.indexOf(city) > -1} />
-              <ListItemText primary={city} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={2}>
-          {selectedCities.map((city) => (
-            <Grid key={city} item>
-              <BasicCard city={city}></BasicCard>
-            </Grid>
-          ))}
+      <Grid container direction="column" justifyContent="center">
+        <FormControl sx={{ m: 1, margin: 2 }}>
+          <InputLabel id="demo-multiple-checkbox-label">Cities</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={selectedCities}
+            onChange={handleChange}
+            input={<OutlinedInput label="Cities" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {cities.map((city) => (
+              <MenuItem key={city} value={city}>
+                <Checkbox checked={selectedCities.indexOf(city) > -1} />
+                <ListItemText primary={city} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid container textAlign="center" spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={2}>
+            {selectedCities.map((city) => (
+              <Grid key={city} item>
+                <BasicCard city={city}></BasicCard>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
-        </Grid>
-    </div>
+    </Grid>
   );
 }
 
