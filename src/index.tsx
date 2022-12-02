@@ -1,16 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import MainCompnent from "./components/MainCompnent/MainComponent";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import FullWeatherInformation from "./components/FullInformation/FullInformation";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
+
 const App = () => {
   let routes = useRoutes([
     { path: "/", element: <MainCompnent /> },
-    { path: "/full-information", element: <FullWeatherInformation /> },
+    {
+      path: `/full-information/:id`,
+      element: <FullWeatherInformation />,
+    },
   ]);
   return routes;
 };

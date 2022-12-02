@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import "./CityCard.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../store/store";
@@ -73,8 +72,8 @@ export default function CityCard({ city }: Props) {
   }
 
   return (
-    <Card className="card">
-      <CardContent>
+    <Card className="card" >
+      <CardContent sx={{  width: 300 }}>
         <Typography variant="h5" component="div">
           {cityInformation.name}
         </Typography>
@@ -96,8 +95,8 @@ export default function CityCard({ city }: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to="/full-information" className="link">
-          <Button size="small">Learn more</Button>
+        <Link to={`/full-information/${cityInformation.name}`} className="link">
+          <Button size="small" >Learn more</Button>
         </Link>
         <Button size="small" onClick={updateBtn}>
           Update

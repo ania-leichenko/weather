@@ -14,15 +14,17 @@ export const fetchCityByName = createAsyncThunk(
 type Weather = {
   main: string;
   icon: string;
+  description: string
 };
 
-type CityInformation = {
-  map(arg0: (weather: { main: string; icon: string; }) => string): unknown;
+export type CityInformation = {
+  humidity: string;
   temp_max: number;
   temp_min: number;
   name: string;
   weather: Array<Weather>;
-  main: { temp_min: number; temp_max: number };
+  main: { temp_min: number; temp_max: number, humidity: string };
+  wind: {speed: number};
 };
 export interface CitiesState {
   cities: Array<string>;
