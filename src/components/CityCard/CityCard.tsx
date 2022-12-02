@@ -7,18 +7,19 @@ import Typography from "@mui/material/Typography";
 import "./CityCard.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "../../store/store";
-import { setCityInformation } from "../../store/citiesSlice";
+import type { RootState, AppDispatch } from "../../store/store";
+import { fetchCityByName } from "../../store/citiesSlice";
 
 type Props = {
   city: string;
 };
 
 export default function CityCard({ city }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const citiesInformation = useSelector(
     (state: RootState) => state.citiesSlice.citiesInformation
   );
+
   const cityInformation = citiesInformation[city];
   let weatherDescription;
   let minTemparature;
@@ -26,12 +27,7 @@ export default function CityCard({ city }: Props) {
   let weatherIconId;
 
   function getCityInformation() {
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f847b24e7d8adac7b410a9f557f6a6b3`
-    )
-      .then((response) => response.json())
-      .then((data) => dispatch(setCityInformation(data)))
-      .catch((error) => error);
+    dispatch(fetchCityByName(city));
   }
   useEffect(() => {
     getCityInformation();

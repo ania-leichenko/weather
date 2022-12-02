@@ -1,5 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+
+export const fetchCityByName = createAsyncThunk(
+  'cities/fetchCityByNameStatus',
+  async (city: string) => {
+    return fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f847b24e7d8adac7b410a9f557f6a6b3`
+    )
+      .then((response) => response.json());
+  }
+)
 
 type Weather = {
   main: string;
@@ -33,12 +43,15 @@ export const citiesSlice = createSlice({
     setCity: (state, action: PayloadAction<Array<string>>) => {
       state.cities = action.payload;
     },
-    setCityInformation: (state, action: PayloadAction<CityInformation>) => {
-      state.citiesInformation[action.payload.name] = action.payload;
-    },
-  }
+  },
+   extraReducers(builder) {
+    builder
+      .addCase(fetchCityByName.fulfilled, (state, action) => {
+        state.citiesInformation[action.payload.name] = action.payload; 
+      });
+  },
 });
 
-export const { setCity, setCityInformation } = citiesSlice.actions;
+export const { setCity } = citiesSlice.actions;
 
 export default citiesSlice.reducer;
