@@ -11,8 +11,7 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import { setCity } from "../../store/citiesSlice";
-import Grid  from '@mui/material/Grid';
-
+import Grid  from "@mui/material/Grid";
 
 const LOCALSTORAGE_CITIES_KEY = "cities";
 const ITEM_HEIGHT = 48;
@@ -25,7 +24,6 @@ const MenuProps = {
     },
   },
 };
-
 
 function MainCompnent() {
   const selectedCities = useSelector((state: RootState) => state.citiesSlice.cities);

@@ -6,7 +6,6 @@ import FullWeatherInformation from "./components/FullInformation/FullInformation
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
-
 const App = () => {
   let routes = useRoutes([
     { path: "/", element: <MainCompnent /> },
