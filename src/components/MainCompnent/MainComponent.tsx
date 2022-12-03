@@ -25,7 +25,7 @@ const MenuProps = {
   },
 };
 
-function MainCompnent() {
+function MainComponent() {
   const selectedCities = useSelector((state: RootState) => state.citiesSlice.cities);
   const dispatch = useDispatch();
 
@@ -86,4 +86,4 @@ function MainCompnent() {
   );
 }
 
-export default MainCompnent;
+export default MainComponent;
