@@ -5,7 +5,7 @@ export const fetchCityByName = createAsyncThunk(
   'cities/fetchCityByNameStatus',
   async (city: string) => {
     return fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f847b24e7d8adac7b410a9f557f6a6b3`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f847b24e7d8adac7b410a9f557f6a6b3`
     )
       .then((response) => response.json());
   }

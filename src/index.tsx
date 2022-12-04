@@ -7,7 +7,6 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 
 const App = () => {
-  alert("1");
   let routes = useRoutes([
     { path: "/", element: <MainCompnent /> },
     {
