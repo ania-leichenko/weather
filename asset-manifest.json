@@ -1,11 +1,11 @@
 {
-  "main.js": "/ania-leichenko/weather/static/js/main.ec1d7bf7.chunk.js",
-  "main.js.map": "/ania-leichenko/weather/static/js/main.ec1d7bf7.chunk.js.map",
-  "static/js/1.1e2e905d.chunk.js": "/ania-leichenko/weather/static/js/1.1e2e905d.chunk.js",
-  "static/js/1.1e2e905d.chunk.js.map": "/ania-leichenko/weather/static/js/1.1e2e905d.chunk.js.map",
-  "runtime~main.js": "/ania-leichenko/weather/static/js/runtime~main.6c74aa57.js",
-  "runtime~main.js.map": "/ania-leichenko/weather/static/js/runtime~main.6c74aa57.js.map",
-  "index.html": "/ania-leichenko/weather/index.html",
-  "precache-manifest.5e94262925ea7ef95d5071bff1a12546.js": "/ania-leichenko/weather/precache-manifest.5e94262925ea7ef95d5071bff1a12546.js",
-  "service-worker.js": "/ania-leichenko/weather/service-worker.js"
+  "main.js": "/weather/static/js/main.ec1d7bf7.chunk.js",
+  "main.js.map": "/weather/static/js/main.ec1d7bf7.chunk.js.map",
+  "static/js/1.1e2e905d.chunk.js": "/weather/static/js/1.1e2e905d.chunk.js",
+  "static/js/1.1e2e905d.chunk.js.map": "/weather/static/js/1.1e2e905d.chunk.js.map",
+  "runtime~main.js": "/weather/static/js/runtime~main.177e1b72.js",
+  "runtime~main.js.map": "/weather/static/js/runtime~main.177e1b72.js.map",
+  "index.html": "/weather/index.html",
+  "precache-manifest.d2d21b29170724fe8699028ff324a3a7.js": "/weather/precache-manifest.d2d21b29170724fe8699028ff324a3a7.js",
+  "service-worker.js": "/weather/service-worker.js"
 }
