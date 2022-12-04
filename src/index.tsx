@@ -10,7 +10,7 @@ const App = () => {
   let routes = useRoutes([
     { path: "/", element: <MainCompnent /> },
     {
-      path: `/full-information/:id`,
+      path: `full-information/:id`,
       element: <FullWeatherInformation />,
     },
   ]);
