@@ -7,6 +7,7 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 
 const App = () => {
+  alert("1");
   let routes = useRoutes([
     { path: "/", element: <MainCompnent /> },
     {
@@ -23,7 +24,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename="/">
+      <Router basename="/weather">
         <App />
       </Router>
     </Provider>
